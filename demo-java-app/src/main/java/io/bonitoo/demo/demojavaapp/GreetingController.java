@@ -16,4 +16,13 @@ public class GreetingController {
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
+
+	@GetMapping("/error-npe")
+	public Greeting error(@RequestParam(value = "name", defaultValue = "World") String name) {
+		if (true) {
+			throw new NullPointerException("NPE Error no."+counter.incrementAndGet());
+		}
+		return new Greeting(counter.incrementAndGet(), String.format(template, name));
+	}
+
 }
