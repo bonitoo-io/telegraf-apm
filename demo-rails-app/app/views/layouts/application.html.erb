@@ -12,6 +12,9 @@
         elasticApm.init({
             serviceName: 'DemoRails-RUM',
             serverUrl: 'http://localhost:8200',
+            pageLoadTraceId: "<%= ElasticAPM.current_transaction&.trace_id %>",
+            pageLoadSpanId: "<%= ElasticAPM.current_transaction&.ensure_parent_id %>",
+            pageLoadSampled: <%= ElasticAPM.current_transaction&.sampled? %>
         })
     </script>
   </head>
