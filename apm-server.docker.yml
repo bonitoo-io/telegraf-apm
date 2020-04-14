@@ -522,6 +522,9 @@ output.elasticsearch:
   # IPv6 addresses should always be defined as: `https://[2001:db8::1]:9200`.
   hosts: ["elasticsearch:9200"]
 
+  pipelines:
+    - pipeline: apm_user_geoip
+
   # Boolean flag to enable or disable the output module.
   #enabled: true
 

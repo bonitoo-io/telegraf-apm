@@ -11,6 +11,7 @@ docker rm -f elasticsearch || true
 docker rm -f kibana || true
 docker rm -f apm-server || true
 docker rm -f demo-rails-app || true
+docker rm -f demo-java-app || true
 
 docker network rm apm_network || true
 docker network create -d bridge apm_network --subnet 192.168.1.0/24 --gateway 192.168.1.1
@@ -27,6 +28,24 @@ docker run --detach --name elasticsearch  \
 docker run --detach --name kibana\
   -p 5601:5601 --network apm_network \
   docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
+
+echo "Wait to start Elastic Search"
+wget -S --spider --tries=20 --retry-connrefused --waitretry=5 http://localhost:9200/
+
+curl -H 'Content-Type: application/json' -XPUT 'http://localhost:9200/_ingest/pipeline/apm_user_geoip' \
+ -d '{
+  "description": "Resolve GeoIP information for APM events",
+  "processors": [
+    {
+      "geoip": {
+        "field": "context.user.ip",
+        "target_field": "user.geo",
+        "ignore_missing": true
+      }
+    }
+  ]
+  }'
+
 
 docker run --detach --name=apm-server \
   --user=apm-server \
@@ -48,6 +67,13 @@ docker run --detach --name=apm-server \
 
 
 docker -v  build ./demo-rails-app -t demo-rails-app
+docker -v  build ./demo-java-app -t demo-java-app
+
+docker run -d --name demo-java-app \
+  --network apm_network \
+  -p 8080:8080 \
+  -e "JAVA_OPTS=-Xmx128m -Delastic.apm.server_urls=http://apm-server:8200"  \
+  demo-java-app:latest
 
 docker run --rm --detach --name=demo-rails-app \
   --network apm_network \
