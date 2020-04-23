@@ -1,0 +1,1407 @@
+{
+ "meta": {
+  "version": "1",
+  "type": "dashboard",
+  "name": "APM Ruby on Rails App-Template",
+  "description": "template created from dashboard: APM Ruby on Rails App"
+ },
+ "content": {
+  "data": {
+   "type": "dashboard",
+   "attributes": {
+    "name": "APM Ruby on Rails App",
+    "description": ""
+   },
+   "relationships": {
+    "label": {
+     "data": []
+    },
+    "cell": {
+     "data": [
+      {
+       "type": "cell",
+       "id": "0595cb4310eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4311eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43122b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43126b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4312eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43132b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4313ab6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4313eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43146b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4314ab6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4314eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43156b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4315eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb43166b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cb4316ab6000"
+      }
+     ]
+    },
+    "variable": {
+     "data": [
+      {
+       "type": "variable",
+       "id": "0595cb431feb6000"
+      }
+     ]
+    }
+   }
+  },
+  "included": [
+   {
+    "id": "0595cb4310eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 4,
+     "w": 6,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4310eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4311eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 12,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4311eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43122b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 1,
+     "w": 2,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43122b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43126b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 7,
+     "y": 1,
+     "w": 5,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43126b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4312eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 12,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4312eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43132b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 4,
+     "y": 12,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43132b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4313ab6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 7,
+     "w": 12,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4313ab6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4313eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 8,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4313eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43146b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 11,
+     "w": 12,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43146b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4314ab6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 2,
+     "w": 2,
+     "h": 2
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4314ab6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4314eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 4,
+     "y": 8,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4314eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43156b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 8,
+     "y": 12,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43156b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4315eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 8,
+     "y": 8,
+     "w": 4,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4315eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb43166b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 2,
+     "y": 1,
+     "w": 5,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb43166b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cb4316ab6000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 4,
+     "w": 6,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cb4316ab6000"
+      }
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4310eb6000",
+    "attributes": {
+     "name": "Process memory",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n    |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_system.process.memory.size_value\" )\n  |> keep(columns: [\"_time\", \"_value\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "15db5731-c561-4322-8393-7d34205eb676",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "d4f37556-1ec0-47fe-a8bb-68b92250b069",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "b552bcce-f3c1-4166-a380-1acae7c09211",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4311eb6000",
+    "attributes": {
+     "name": "Transaction duration mean 1/min",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"duration\")\n  |> filter(fn: (r) => r.type == \"transaction\")\n  |> aggregateWindow(every: 1m, fn: mean)",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "ms ",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "line-plus-single-stat",
+      "legend": {},
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "prefix": "",
+      "suffix": "",
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43122b6000",
+    "attributes": {
+     "name": "System Memory Total",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "single-stat",
+      "queries": [
+       {
+        "text": "\n  from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n      |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.total_value\")\n  |> last()\n  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))\n  |> yield(name: \"last\")\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "prefix": "",
+      "tickPrefix": "",
+      "suffix": " GB",
+      "tickSuffix": "",
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43126b6000",
+    "attributes": {
+     "name": "CPU usage",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n    |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_system.cpu.total.norm.pct_value\")\n  |> map(fn: (r) => ({ r with _value: r._value * 100.0 }))\n  |> keep(columns: [\"_time\", \"_value\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "2",
+        "scale": "linear"
+       }
+      },
+      "type": "line-plus-single-stat",
+      "legend": {},
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "prefix": "",
+      "suffix": " % ",
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4312eb6000",
+    "attributes": {
+     "name": "Name this Cell",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "markdown",
+      "note": "#### System metrics"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43132b6000",
+    "attributes": {
+     "name": "Transactions count per min",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r.type == \"metricset\")\n  |> filter(fn: (r) => r._field == \"samples_transaction.duration.count_value\")\n  |> keep(columns: [\"_time\", \"_value\", \"system_hostname\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])\n//   |> drop(columns: [\"system_platform\", \"system_hostname\", \"system_architecture\", \"service_runtime_version\",\n//   \"service_runtime_name\",\"service_language_name\", \"service_language_version\", \"service_framework_name\", \"service_framework_version\"])\n//   |> keep(columns: [\"_time\", \"_value\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])\n   |> aggregateWindow(every: 1m, fn: mean)\n\n//   |> drop(fn: (column) => column =~ /system*/)\n//   |> drop(fn: (column) => column =~ /process*/)\n//   |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "line-plus-single-stat",
+      "legend": {},
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "prefix": "",
+      "suffix": "",
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4313ab6000",
+    "attributes": {
+     "name": "Name this Cell",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "markdown",
+      "note": "#### Ruby runtime"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4313eb6000",
+    "attributes": {
+     "name": "GC count",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_ruby.gc.count_value\")\n//   \n  |> aggregateWindow(every: 1m, fn: mean)\n  \n  |> keep(columns: [\"_time\", \"_value\", \"system_hostname\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])\n//   |> yield(name: \"nonnegative derivative\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "797270cb-adda-45a7-b1b2-a06acaa7b2c9",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "09bca765-0c3b-4f9b-924d-b042ff8d5290",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "74d1b6fd-70a6-4831-ab37-c9b6eee89a54",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43146b6000",
+    "attributes": {
+     "name": "Name this Cell",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "markdown",
+      "note": "#### Transactions"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4314ab6000",
+    "attributes": {
+     "name": "Free memory",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "single-stat",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n      |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.actual.free_value\")\n  |> last()\n  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))\n  |> yield(name: \"last\")\n",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "prefix": "",
+      "tickPrefix": "",
+      "suffix": " GB",
+      "tickSuffix": "",
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4314eb6000",
+    "attributes": {
+     "name": "Ruby threads",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field =~ /samples_ruby.threads*/)\n//   \n//   |> aggregateWindow(every: 1m, fn: mean)\n  \n//   |> keep(columns: [\"_time\", \"_value\", \"system_hostname\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])\n//   |> yield(name: \"nonnegative derivative\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "797270cb-adda-45a7-b1b2-a06acaa7b2c9",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "09bca765-0c3b-4f9b-924d-b042ff8d5290",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "74d1b6fd-70a6-4831-ab37-c9b6eee89a54",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43156b6000",
+    "attributes": {
+     "name": "Response codes",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"context_response_status_code\")\n//   |> group(columns: [\"host\", \"_measurement\", \"_value\"], mode:\"by\")\n  \n\n\n   |> aggregateWindow(every: v.windowPeriod, fn: count)",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "c5938bb6-6637-495d-85a9-0c1635131983",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "63ed1189-b7ce-4bea-b2c2-cbc249f6ff8f",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "8cb0281e-8188-41fc-96db-6112aa3e8a54",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4315eb6000",
+    "attributes": {
+     "name": "Ruby Heap slots",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_ruby.heap.slots.live_value\" or r._field == \"samples_ruby.heap.slots.free_value\" or r._field == \"samples_ruby.heap.allocations.total_value\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "ad9039c4-1928-4864-8fe2-4ded76690fe1",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "e5bd1e11-c234-40fc-9ebc-5098d40d15f1",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "cf49ee04-02c7-4cc7-93bd-0c5771626b07",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb43166b6000",
+    "attributes": {
+     "name": "System memory usage",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.total_value\" or r._field == \"samples_system.memory.actual.free_value\")\n  |> pivot(rowKey:[\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({ r with _value: \n        ( r[\"samples_system.memory.total_value\"] - r[\"samples_system.memory.actual.free_value\"]) /\n        ( r[\"samples_system.memory.total_value\"] / 100.0)\n      }))\n   |> keep(columns: [\"_value\", \"_start\", \"_stop\", \"_time\", \"system_hostname\", \"service_name\"])      \n   |> yield(name:\"vvv\") \n\n\n\n",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "line-plus-single-stat",
+      "legend": {},
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#BF3D5E",
+        "name": "ruby",
+        "value": 0
+       },
+       {
+        "id": "137cf5fd-452d-4d9e-b517-2aa90de134aa",
+        "type": "text",
+        "hex": "#32B08C",
+        "name": "viridian",
+        "value": 1
+       },
+       {
+        "id": "6c3a2867-51cd-4501-afc6-a4d3966b1714",
+        "type": "text",
+        "hex": "#513CC6",
+        "name": "planet",
+        "value": 50
+       },
+       {
+        "id": "a91ada14-2ecf-4142-ad56-34d9740b5cad",
+        "type": "text",
+        "hex": "#BF3D5E",
+        "name": "ruby",
+        "value": 80
+       },
+       {
+        "id": "175bbbbd-9141-4eb5-a2a7-3a8e7ce621cb",
+        "type": "scale",
+        "hex": "#FDC44F",
+        "name": "Cthulhu",
+        "value": 0
+       },
+       {
+        "id": "b3d2a382-6332-4544-8aca-dd8c8cd80d9c",
+        "type": "scale",
+        "hex": "#007C76",
+        "name": "Cthulhu",
+        "value": 0
+       },
+       {
+        "id": "e1f0feb9-1c72-4115-86e9-85710f788cd6",
+        "type": "scale",
+        "hex": "#8983FF",
+        "name": "Cthulhu",
+        "value": 0
+       }
+      ],
+      "prefix": "",
+      "suffix": " %",
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 0
+      },
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cb4316ab6000",
+    "attributes": {
+     "name": "Process Memory RSS",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn: (r) =>  r._field == \"samples_system.process.memory.rss.bytes_value\")\n  |> keep(columns: [\"_time\", \"_value\", \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "15db5731-c561-4322-8393-7d34205eb676",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "d4f37556-1ec0-47fe-a8bb-68b92250b069",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "b552bcce-f3c1-4166-a380-1acae7c09211",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "id": "0595cb431feb6000",
+    "type": "variable",
+    "attributes": {
+     "name": "bucket",
+     "arguments": {
+      "type": "query",
+      "values": {
+       "query": "buckets()\n  |> filter(fn: (r) => r.name !~ /^_/)\n  |> rename(columns: {name: \"_value\"})\n  |> keep(columns: [\"_value\"])\n",
+       "language": "flux"
+      }
+     },
+     "selected": null
+    },
+    "relationships": {
+     "label": {
+      "data": []
+     }
+    }
+   }
+  ]
+ },
+ "labels": []
+}

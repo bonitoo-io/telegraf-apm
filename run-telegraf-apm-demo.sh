@@ -11,8 +11,8 @@ docker rm -f telegraf-apm || true
 docker network rm apm_network || true
 docker network create -d bridge apm_network --subnet 192.168.1.0/24 --gateway 192.168.1.1 || true
 
-#./influxdb-restart.sh
-#./telegraf/build-telegraf.sh
+./influxdb-restart.sh
+./telegraf/build-telegraf.sh
 
 docker run -d --name telegraf-apm \
   --network apm_network \
@@ -29,10 +29,12 @@ docker run -d --name demo-java-app \
   --network apm_network \
   -p 8080:8080 \
   -e "JAVA_OPTS=-Xmx128m -Delastic.apm.server_urls=http://telegraf-apm:8200"  \
+  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.5 \
   demo-java-app:latest
 
 docker run -d --name=demo-rails-app \
   --network apm_network \
   -p 3000:3000 \
   --env ELASTIC_APM_SERVER_URL=http://telegraf-apm:8200 \
+  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.5 \
   demo-rails-app:latest

@@ -1,0 +1,616 @@
+{
+ "meta": {
+  "version": "1",
+  "type": "dashboard",
+  "name": "APM rum-js-Template",
+  "description": "template created from dashboard: APM rum-js"
+ },
+ "content": {
+  "data": {
+   "type": "dashboard",
+   "attributes": {
+    "name": "APM rum-js",
+    "description": ""
+   },
+   "relationships": {
+    "label": {
+     "data": []
+    },
+    "cell": {
+     "data": [
+      {
+       "type": "cell",
+       "id": "0595cbd0146b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cbd014eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cbd0152b6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cbd015ab6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cbd015eb6000"
+      },
+      {
+       "type": "cell",
+       "id": "0595cbd0166b6000"
+      }
+     ]
+    },
+    "variable": {
+     "data": []
+    }
+   }
+  },
+  "included": [
+   {
+    "id": "0595cbd0146b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 5,
+     "w": 6,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd0146b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cbd014eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 1,
+     "w": 6,
+     "h": 4
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd014eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cbd0152b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 12,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd0152b6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cbd015ab6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 8,
+     "w": 12,
+     "h": 4
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd015ab6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cbd015eb6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 1,
+     "w": 6,
+     "h": 4
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd015eb6000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0595cbd0166b6000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 5,
+     "w": 6,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0595cbd0166b6000"
+      }
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd0146b6000",
+    "attributes": {
+     "name": "Browser DOM stats",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"rum-js\")\n  |> filter(fn: (r) => r._field == \"marks_agent_domComplete\" or r._field == \"marks_agent_domInteractive\" or r._field == \"marks_agent_firstContentfulPaint\" or r._field == \"marks_agent_largestContentfulPaint\" or r._field == \"marks_agent_timeToFirstByte\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "2",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "15db5731-c561-4322-8393-7d34205eb676",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "d4f37556-1ec0-47fe-a8bb-68b92250b069",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "b552bcce-f3c1-4166-a380-1acae7c09211",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd014eb6000",
+    "attributes": {
+     "name": "Page load transaction",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"rum-js\")\n  |> filter(fn: (r) => r._field == \"duration\" and r[\"type\"]==\"transaction\")\n\n  |> aggregateWindow(every: 1m, fn: mean)",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "018b6a0f-1965-400d-b2e5-2086fbf011b0",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "ec47ff80-2055-42dc-a272-31c3cf5be786",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "af40585a-0715-48b5-b83d-6e3b39e1eb7d",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd0152b6000",
+    "attributes": {
+     "name": "Name this Cell",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "markdown",
+      "note": "#### Transactions"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd015ab6000",
+    "attributes": {
+     "name": "Response size",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"rum-js\")\n  |> filter(fn: (r) => r._field == \"context_response_decoded_body_size\" or r._field == \"context_response_encoded_body_size\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "8ca9619a-7c14-43f5-809f-11c75ed8ab3d",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "24f57e83-a242-4b2c-8902-fd9498d98156",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "7d3b8e8b-7050-4f69-8e79-dd6705ac798c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd015eb6000",
+    "attributes": {
+     "name": "AVG Transaction Span Duration",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"rum-js\")\n  |> filter(fn: (r) => r._field == \"duration\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "8ca9619a-7c14-43f5-809f-11c75ed8ab3d",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "24f57e83-a242-4b2c-8902-fd9498d98156",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "7d3b8e8b-7050-4f69-8e79-dd6705ac798c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0595cbd0166b6000",
+    "attributes": {
+     "name": "Browser navigation timing",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"rum-js\")\n  |> filter(fn: (r) => r._field == \"marks_navigationTiming_connectEnd\" or r._field == \"marks_navigationTiming_connectStart\" or r._field == \"marks_navigationTiming_domComplete\" or r._field == \"marks_navigationTiming_domContentLoadedEventEnd\" or r._field == \"marks_navigationTiming_domContentLoadedEventStart\" or r._field == \"marks_navigationTiming_domInteractive\" or r._field == \"marks_navigationTiming_domLoading\" or r._field == \"marks_navigationTiming_domainLookupEnd\" or r._field == \"marks_navigationTiming_domainLookupStart\" or r._field == \"marks_navigationTiming_fetchStart\" or r._field == \"marks_navigationTiming_loadEventEnd\" or r._field == \"marks_navigationTiming_loadEventStart\" or r._field == \"marks_navigationTiming_requestStart\" or r._field == \"marks_navigationTiming_responseEnd\" or r._field == \"marks_navigationTiming_responseStart\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "2",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "15db5731-c561-4322-8393-7d34205eb676",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "d4f37556-1ec0-47fe-a8bb-68b92250b069",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "b552bcce-f3c1-4166-a380-1acae7c09211",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   }
+  ]
+ },
+ "labels": []
+}

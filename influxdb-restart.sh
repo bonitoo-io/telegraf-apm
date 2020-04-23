@@ -1,6 +1,10 @@
+#!/usr/bin/env bash
+set -ex
+
 docker rm -f influxdb_v2 || true
 
-INFLUXDB_V2_IMAGE=quay.io/influxdb/influxdb:2.0.0-beta
+INFLUXDB_V2_IMAGE=quay.io/influxdb/influx:nightly
+#INFLUXDB_V2_IMAGE=quay.io/influxdb/influxdb:2.0.0-beta
 
 docker pull ${INFLUXDB_V2_IMAGE} || true
 docker run \
