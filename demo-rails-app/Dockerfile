@@ -24,7 +24,11 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 #RUN gem install sqlite3 -v '1.4.2' --source 'https://rubygems.org/'
 RUN apt update
-RUN apt install build-essential sqlite3 libsqlite3-dev yarn -y --no-install-recommends
+
+## bug in debian-slim - https://github.com/debuerreotype/debuerreotype/issues/10
+RUN for i in $(seq 1 8); do mkdir -p "/usr/share/man/man${i}"; done
+
+RUN apt install build-essential sqlite3 libsqlite3-dev postgresql-client yarn -y --no-install-recommends
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 # Copy the main application.
 COPY . ./
