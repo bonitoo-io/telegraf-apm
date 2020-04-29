@@ -8,6 +8,7 @@
 name: Ruby
 
 defaults:
+  
   run:
     working-directory: ./demo-rails-app
   
@@ -19,7 +20,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-latest]
     services:
       postgres:
         image: postgres:11.5
