@@ -6,6 +6,8 @@ gem 'elastic-apm'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'redis'
+gem 'redis-rails'
+gem 'prometheus-client'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'

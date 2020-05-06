@@ -10,7 +10,7 @@
    "type": "dashboard",
    "attributes": {
     "name": "APM Java Spring Boot App",
-    "description": ""
+    "description": "A collection of visializations of Elastic-APM Java agent"
    },
    "relationships": {
     "label": {
@@ -20,63 +20,63 @@
      "data": [
       {
        "type": "cell",
-       "id": "0595cb7a832b6000"
+       "id": "05a69b9596be1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a83eb6000"
+       "id": "05a69b95977e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a842b6000"
+       "id": "05a69b9599be1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a84ab6000"
+       "id": "05a69b959a7e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a856b6000"
+       "id": "05a69b959abe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a862b6000"
+       "id": "05a69b959b3e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a866b6000"
+       "id": "05a69b959b7e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a86eb6000"
+       "id": "05a69b959bfe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a872b6000"
+       "id": "05a69b959dfe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a87ab6000"
+       "id": "05a69b959ebe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a87eb6000"
+       "id": "05a69b959efe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a886b6000"
+       "id": "05a69b959f7e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a88ab6000"
+       "id": "05a69b959fbe1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a892b6000"
+       "id": "05a69b95a07e1000"
       },
       {
        "type": "cell",
-       "id": "0595cb7a896b6000"
+       "id": "05a69b95a0be1000"
       }
      ]
     },
@@ -84,7 +84,7 @@
      "data": [
       {
        "type": "variable",
-       "id": "0595cb431feb6000"
+       "id": "05a68915523e1000"
       }
      ]
     }
@@ -92,7 +92,7 @@
   },
   "included": [
    {
-    "id": "0595cb7a832b6000",
+    "id": "05a69b9596be1000",
     "type": "cell",
     "attributes": {
      "x": 6,
@@ -104,13 +104,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a832b6000"
+       "id": "05a69b9596be1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a83eb6000",
+    "id": "05a69b95977e1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -122,67 +122,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a83eb6000"
+       "id": "05a69b95977e1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a842b6000",
-    "type": "cell",
-    "attributes": {
-     "x": 2,
-     "y": 1,
-     "w": 1,
-     "h": 1
-    },
-    "relationships": {
-     "view": {
-      "data": {
-       "type": "view",
-       "id": "0595cb7a842b6000"
-      }
-     }
-    }
-   },
-   {
-    "id": "0595cb7a84ab6000",
-    "type": "cell",
-    "attributes": {
-     "x": 0,
-     "y": 0,
-     "w": 12,
-     "h": 1
-    },
-    "relationships": {
-     "view": {
-      "data": {
-       "type": "view",
-       "id": "0595cb7a84ab6000"
-      }
-     }
-    }
-   },
-   {
-    "id": "0595cb7a856b6000",
-    "type": "cell",
-    "attributes": {
-     "x": 3,
-     "y": 1,
-     "w": 3,
-     "h": 3
-    },
-    "relationships": {
-     "view": {
-      "data": {
-       "type": "view",
-       "id": "0595cb7a856b6000"
-      }
-     }
-    }
-   },
-   {
-    "id": "0595cb7a862b6000",
+    "id": "05a69b9599be1000",
     "type": "cell",
     "attributes": {
      "x": 6,
@@ -194,13 +140,67 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a862b6000"
+       "id": "05a69b9599be1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a866b6000",
+    "id": "05a69b959a7e1000",
+    "type": "cell",
+    "attributes": {
+     "x": 3,
+     "y": 1,
+     "w": 3,
+     "h": 3
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "05a69b959a7e1000"
+      }
+     }
+    }
+   },
+   {
+    "id": "05a69b959abe1000",
+    "type": "cell",
+    "attributes": {
+     "x": 2,
+     "y": 1,
+     "w": 1,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "05a69b959abe1000"
+      }
+     }
+    }
+   },
+   {
+    "id": "05a69b959b3e1000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 12,
+     "h": 1
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "05a69b959b3e1000"
+      }
+     }
+    }
+   },
+   {
+    "id": "05a69b959b7e1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -212,13 +212,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a866b6000"
+       "id": "05a69b959b7e1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a86eb6000",
+    "id": "05a69b959bfe1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -230,13 +230,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a86eb6000"
+       "id": "05a69b959bfe1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a872b6000",
+    "id": "05a69b959dfe1000",
     "type": "cell",
     "attributes": {
      "x": 9,
@@ -248,13 +248,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a872b6000"
+       "id": "05a69b959dfe1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a87ab6000",
+    "id": "05a69b959ebe1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -266,13 +266,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a87ab6000"
+       "id": "05a69b959ebe1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a87eb6000",
+    "id": "05a69b959efe1000",
     "type": "cell",
     "attributes": {
      "x": 9,
@@ -284,13 +284,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a87eb6000"
+       "id": "05a69b959efe1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a886b6000",
+    "id": "05a69b959f7e1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -302,13 +302,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a886b6000"
+       "id": "05a69b959f7e1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a88ab6000",
+    "id": "05a69b959fbe1000",
     "type": "cell",
     "attributes": {
      "x": 3,
@@ -320,13 +320,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a88ab6000"
+       "id": "05a69b959fbe1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a892b6000",
+    "id": "05a69b95a07e1000",
     "type": "cell",
     "attributes": {
      "x": 6,
@@ -338,13 +338,13 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a892b6000"
+       "id": "05a69b95a07e1000"
       }
      }
     }
    },
    {
-    "id": "0595cb7a896b6000",
+    "id": "05a69b95a0be1000",
     "type": "cell",
     "attributes": {
      "x": 0,
@@ -356,21 +356,21 @@
      "view": {
       "data": {
        "type": "view",
-       "id": "0595cb7a896b6000"
+       "id": "05a69b95a0be1000"
       }
      }
     }
    },
    {
     "type": "view",
-    "id": "0595cb7a832b6000",
+    "id": "05a69b9596be1000",
     "attributes": {
      "name": "Process memory",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.process.memory.size_value\")",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.process.memory.size\")",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -451,14 +451,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a83eb6000",
+    "id": "05a69b95977e1000",
     "attributes": {
      "name": "Transaction duration",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"duration\")\n  |> filter(fn: (r) => r.type == \"transaction\")\n  \n//   |> aggregateWindow(every: v.windowPeriod, fn: mean)\n  |> aggregateWindow(every: v.windowPeriod , fn: mean)",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"duration\")\n  |> filter(fn: (r) => r.apm_event_type == \"transaction\")\n  \n//   |> aggregateWindow(every: v.windowPeriod, fn: mean)\n  |> aggregateWindow(every: v.windowPeriod , fn: mean)",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -539,155 +539,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a842b6000",
-    "attributes": {
-     "name": "Mem Total",
-     "properties": {
-      "shape": "chronograf-v2",
-      "type": "single-stat",
-      "queries": [
-       {
-        "text": "\n  from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.total_value\")\n  |> last()\n  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))\n  |> yield(name: \"last\")\n  ",
-        "editMode": "advanced",
-        "name": "",
-        "builderConfig": {
-         "buckets": [],
-         "tags": [
-          {
-           "key": "_measurement",
-           "values": [],
-           "aggregateFunctionType": "filter"
-          }
-         ],
-         "functions": [],
-         "aggregateWindow": {
-          "period": "auto"
-         }
-        }
-       }
-      ],
-      "prefix": "",
-      "tickPrefix": "",
-      "suffix": " GB",
-      "tickSuffix": "",
-      "colors": [
-       {
-        "id": "base",
-        "type": "text",
-        "hex": "#00C9FF",
-        "name": "laser",
-        "value": 0
-       }
-      ],
-      "decimalPlaces": {
-       "isEnforced": true,
-       "digits": 2
-      },
-      "note": "",
-      "showNoteWhenEmpty": false
-     }
-    }
-   },
-   {
-    "type": "view",
-    "id": "0595cb7a84ab6000",
-    "attributes": {
-     "name": "Name this Cell",
-     "properties": {
-      "shape": "chronograf-v2",
-      "type": "markdown",
-      "note": "#### System metrics"
-     }
-    }
-   },
-   {
-    "type": "view",
-    "id": "0595cb7a856b6000",
-    "attributes": {
-     "name": "CPU usage",
-     "properties": {
-      "shape": "chronograf-v2",
-      "queries": [
-       {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.cpu.total.norm.pct_value\")\n  ",
-        "editMode": "advanced",
-        "name": "",
-        "builderConfig": {
-         "buckets": [],
-         "tags": [
-          {
-           "key": "_measurement",
-           "values": [],
-           "aggregateFunctionType": "filter"
-          }
-         ],
-         "functions": [],
-         "aggregateWindow": {
-          "period": "auto"
-         }
-        }
-       }
-      ],
-      "axes": {
-       "x": {
-        "bounds": [
-         "",
-         ""
-        ],
-        "label": "",
-        "prefix": "",
-        "suffix": "",
-        "base": "10",
-        "scale": "linear"
-       },
-       "y": {
-        "bounds": [
-         "",
-         ""
-        ],
-        "label": "",
-        "prefix": "",
-        "suffix": "",
-        "base": "2",
-        "scale": "linear"
-       }
-      },
-      "type": "line-plus-single-stat",
-      "legend": {},
-      "colors": [
-       {
-        "id": "base",
-        "type": "text",
-        "hex": "#00C9FF",
-        "name": "laser",
-        "value": 0
-       }
-      ],
-      "prefix": "",
-      "suffix": " % ",
-      "decimalPlaces": {
-       "isEnforced": true,
-       "digits": 2
-      },
-      "note": "",
-      "showNoteWhenEmpty": false,
-      "xColumn": "_time",
-      "yColumn": "_value",
-      "shadeBelow": false,
-      "position": "overlaid"
-     }
-    }
-   },
-   {
-    "type": "view",
-    "id": "0595cb7a862b6000",
+    "id": "05a69b9599be1000",
     "attributes": {
      "name": "Transactions count per min",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r.type == \"metricset\")\n  |> filter(fn: (r) => r._field == \"samples_transaction.duration.count_value\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)\n\n  ",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r.apm_event_type == \"metricset\")\n  |> filter(fn: (r) => r._field == \"samples_transaction.duration.count\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)\n\n  ",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -758,7 +617,148 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a866b6000",
+    "id": "05a69b959a7e1000",
+    "attributes": {
+     "name": "CPU usage",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.cpu.total.norm.pct\")\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "2",
+        "scale": "linear"
+       }
+      },
+      "type": "line-plus-single-stat",
+      "legend": {},
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "prefix": "",
+      "suffix": " % ",
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "05a69b959abe1000",
+    "attributes": {
+     "name": "Mem Total",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "single-stat",
+      "queries": [
+       {
+        "text": "\n  from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.total\")\n  |> last()\n  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))\n  |> yield(name: \"last\")\n  ",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "prefix": "",
+      "tickPrefix": "",
+      "suffix": " GB",
+      "tickSuffix": "",
+      "colors": [
+       {
+        "id": "base",
+        "type": "text",
+        "hex": "#00C9FF",
+        "name": "laser",
+        "value": 0
+       }
+      ],
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "05a69b959b3e1000",
+    "attributes": {
+     "name": "Name this Cell",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "markdown",
+      "note": "#### System metrics"
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "05a69b959b7e1000",
     "attributes": {
      "name": "Name this Cell",
      "properties": {
@@ -770,7 +770,7 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a86eb6000",
+    "id": "05a69b959bfe1000",
     "attributes": {
      "name": "Name this Cell",
      "properties": {
@@ -782,14 +782,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a872b6000",
+    "id": "05a69b959dfe1000",
     "attributes": {
      "name": "Free memory",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.actual.free_value\")\n ",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_system.memory.actual.free\")\n ",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -870,14 +870,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a87ab6000",
+    "id": "05a69b959ebe1000",
     "attributes": {
      "name": "Response results",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n    |> filter(fn: (r) => r.type == \"transaction\")\n  |> filter(fn: (r) => r._field == \"context_response_status_code\")\n//   |> filter(fn: (r) => r._value > 300)\n  |> aggregateWindow(every: 1m, fn: count)\n",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n    |> filter(fn: (r) => r.apm_event_type == \"transaction\")\n  |> filter(fn: (r) => r._field == \"context_response_status_code\")\n//   |> filter(fn: (r) => r._value > 300)\n  |> aggregateWindow(every: 1m, fn: count)\n",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -958,14 +958,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a87eb6000",
+    "id": "05a69b959efe1000",
     "attributes": {
      "name": "JVM memory",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.memory.heap.committed_value\" or r._field == \"samples_jvm.memory.heap.max_value\" or r._field == \"samples_jvm.memory.heap.used_value\" or r._field == \"samples_jvm.memory.non_heap.committed_value\" or r._field == \"samples_jvm.memory.non_heap.max_value\" or r._field == \"samples_jvm.memory.non_heap.used_value\")\n//   |> group(columns: [\"host\", \"_measurement\", \"_field\"], mode:\"by\")",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.memory.heap.committed\" or r._field == \"samples_jvm.memory.heap.max\" or r._field == \"samples_jvm.memory.heap.used\" or r._field == \"samples_jvm.memory.non_heap.committed\" or r._field == \"samples_jvm.memory.non_heap.max\" or r._field == \"samples_jvm.memory.non_heap.used\")\n//   |> group(columns: [\"host\", \"_measurement\", \"_field\"], mode:\"by\")",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -1046,14 +1046,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a886b6000",
+    "id": "05a69b959f7e1000",
     "attributes": {
      "name": "JVM gc time",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.time_value\")",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.time\")",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -1134,102 +1134,14 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a88ab6000",
+    "id": "05a69b959fbe1000",
     "attributes": {
      "name": "JVM gc alloc",
      "properties": {
       "shape": "chronograf-v2",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.alloc_value\")",
-        "editMode": "advanced",
-        "name": "",
-        "builderConfig": {
-         "buckets": [],
-         "tags": [
-          {
-           "key": "_measurement",
-           "values": [],
-           "aggregateFunctionType": "filter"
-          }
-         ],
-         "functions": [],
-         "aggregateWindow": {
-          "period": "auto"
-         }
-        }
-       }
-      ],
-      "axes": {
-       "x": {
-        "bounds": [
-         "",
-         ""
-        ],
-        "label": "",
-        "prefix": "",
-        "suffix": "",
-        "base": "10",
-        "scale": "linear"
-       },
-       "y": {
-        "bounds": [
-         "",
-         ""
-        ],
-        "label": "",
-        "prefix": "",
-        "suffix": "",
-        "base": "10",
-        "scale": "linear"
-       }
-      },
-      "type": "xy",
-      "legend": {},
-      "geom": "line",
-      "colors": [
-       {
-        "id": "ad9039c4-1928-4864-8fe2-4ded76690fe1",
-        "type": "scale",
-        "hex": "#31C0F6",
-        "name": "Nineteen Eighty Four",
-        "value": 0
-       },
-       {
-        "id": "e5bd1e11-c234-40fc-9ebc-5098d40d15f1",
-        "type": "scale",
-        "hex": "#A500A5",
-        "name": "Nineteen Eighty Four",
-        "value": 0
-       },
-       {
-        "id": "cf49ee04-02c7-4cc7-93bd-0c5771626b07",
-        "type": "scale",
-        "hex": "#FF7E27",
-        "name": "Nineteen Eighty Four",
-        "value": 0
-       }
-      ],
-      "note": "",
-      "showNoteWhenEmpty": false,
-      "xColumn": "",
-      "yColumn": "",
-      "shadeBelow": false,
-      "position": "overlaid",
-      "timeFormat": ""
-     }
-    }
-   },
-   {
-    "type": "view",
-    "id": "0595cb7a892b6000",
-    "attributes": {
-     "name": "JVM gc count",
-     "properties": {
-      "shape": "chronograf-v2",
-      "queries": [
-       {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.count_value\")",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.alloc\")",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -1310,7 +1222,95 @@
    },
    {
     "type": "view",
-    "id": "0595cb7a896b6000",
+    "id": "05a69b95a07e1000",
+    "attributes": {
+     "name": "JVM gc count",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r._field == \"samples_jvm.gc.count\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [],
+         "aggregateWindow": {
+          "period": "auto"
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "legend": {},
+      "geom": "line",
+      "colors": [
+       {
+        "id": "ad9039c4-1928-4864-8fe2-4ded76690fe1",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "e5bd1e11-c234-40fc-9ebc-5098d40d15f1",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "cf49ee04-02c7-4cc7-93bd-0c5771626b07",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "yColumn": "_value",
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": ""
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "05a69b95a0be1000",
     "attributes": {
      "name": "Error count",
      "properties": {
@@ -1318,7 +1318,7 @@
       "type": "single-stat",
       "queries": [
        {
-        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r.type == \"error\")\n  |> filter(fn: (r) => r._field == \"id\")\n    |> count()\n    |> yield(name: \"count\")\n  ",
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_server\")\n  |> filter(fn: (r) => r.service_agent_name == \"java\")\n  |> filter(fn: (r) => r.apm_event_type == \"error\")\n  |> filter(fn: (r) => r._field == \"id\")\n    |> count()\n    |> yield(name: \"count\")\n  ",
         "editMode": "advanced",
         "name": "",
         "builderConfig": {
@@ -1360,7 +1360,7 @@
     }
    },
    {
-    "id": "0595cb431feb6000",
+    "id": "05a68915523e1000",
     "type": "variable",
     "attributes": {
      "name": "bucket",

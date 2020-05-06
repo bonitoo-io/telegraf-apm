@@ -53,6 +53,7 @@ docker run -d --name=demo-rails-app \
   --env ELASTIC_APM_SERVER_URL=http://telegraf-apm:8200 \
   --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.5 \
   --env POSTGRES_HOST=postgres-demo \
+  --env REDIS_HOST=redis-demo \
   demo-rails-app:latest
 
 ## initialize database

@@ -2,6 +2,8 @@
 
 <h1>Posts</h1>
 
+<h2>record count (using cache): <%= @count %></h2>
+
 <table>
   <thead>
     <tr>
@@ -14,14 +16,16 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.published %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% cache post do %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= post.published %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
