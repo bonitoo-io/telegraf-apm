@@ -45,6 +45,7 @@ docker run -d --name demo-java-app \
   -p 8080:8080 \
   -e "JAVA_OPTS=-Xmx128m -Delastic.apm.server_urls=http://telegraf-apm:8200"  \
   --env ELASTIC_APM_APPLICATION_PACKAGES=io.bonitoo \
+  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.1 \
   demo-java-app:latest
 
 docker run -d --name=demo-rails-app \
@@ -52,6 +53,7 @@ docker run -d --name=demo-rails-app \
   -p 3000:3000 \
   --env ELASTIC_APM_SERVER_URL=http://telegraf-apm:8200 \
   --env POSTGRES_HOST=postgres-demo \
+  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.1 \
   --env REDIS_HOST=redis-demo \
   demo-rails-app:latest
 
