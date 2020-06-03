@@ -2,6 +2,7 @@
 set -ex
 
 docker rm -f influxdb_v2 || true
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 INFLUXDB_V2_IMAGE=quay.io/influxdb/influx:nightly
 #INFLUXDB_V2_IMAGE=quay.io/influxdb/influxdb:2.0.0-beta
@@ -11,6 +12,7 @@ docker run \
        --detach \
        --name influxdb_v2 \
        --network apm_network \
+       --volume "${SCRIPT_PATH}":/usr/src/app/ \
        --publish 9999:9999 \
        ${INFLUXDB_V2_IMAGE}
 

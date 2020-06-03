@@ -61,3 +61,6 @@ docker run -d --name=demo-rails-app \
 
 ## initialize database
 docker exec -it demo-rails-app rails db:migrate:reset
+
+## import dashboard template
+docker exec influxdb_v2 /usr/src/app/template-import.sh

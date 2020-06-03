@@ -1,0 +1,1353 @@
+apiVersion: influxdata.com/v2alpha1
+kind: Label
+metadata:
+    name: crumbling-kalam-29b001
+spec:
+    color: '#FFB94A'
+    name: apm
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Variable
+metadata:
+    name: amazing-taussig-29b00d
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    language: flux
+    name: service_agent_name
+    query: |-
+        import "influxdata/influxdb/v1"
+
+        v1.measurementTagValues(
+          bucket: v.bucket,
+          measurement: "apm_metricset",
+          tag: "service_agent_name"
+        )
+    type: query
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Variable
+metadata:
+    name: interesting-mcclintock-29b011
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    language: flux
+    name: service_name
+    query: |-
+        import "influxdata/influxdb/v1"
+
+        v1.measurementTagValues(
+          bucket: v.bucket,
+          measurement: "apm_metricset",
+          tag: "service_name"
+        )
+    type: query
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Variable
+metadata:
+    name: thirsty-burnell-29b009
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    language: flux
+    name: bucket
+    query: |-
+        buckets()
+          |> filter(fn: (r) => r.name !~ /^_/)
+          |> rename(columns: {name: "_value"})
+          |> keep(columns: ["_value"])
+    type: query
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Variable
+metadata:
+    name: wondrous-driscoll-29b005
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    language: flux
+    name: name
+    query: |-
+        import "influxdata/influxdb/v1"
+
+        v1.measurementTagValues(
+          bucket: v.bucket,
+          measurement: "apm_transaction",
+          tag: "name"
+        )
+    type: query
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: dangerous-mahavira-e9b001
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    charts:
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### System metrics'
+        width: 12
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#FD7A5D'
+            name: Delorean
+            type: scale
+          - hex: '#5F1CF2'
+            name: Delorean
+            type: scale
+          - hex: '#4CE09A'
+            name: Delorean
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Errors
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_error")
+                    |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r["_field"] == "exception_message")
+                  |> aggregateWindow(every: v.windowPeriod, fn: count)
+        width: 2
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: y
+            scale: linear
+          - base: "10"
+            name: x
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transaction duration sum
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                    |> filter(fn: (r) => r["_field"] == "samples_transaction.duration.sum.us")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 3
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transaction duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_transaction")
+                    |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r._field =~ /duration/ and r._field != "duration_count")
+                  |> drop(fn: (column) => column =~ /system*/)
+                   |> drop(fn: (column) => column =~ /process*/)
+                   |> drop(fn: (column) => column =~ /apm_metricset*/)
+                   |> drop(fn: (column) => column =~ /service_environment*/)
+                   |> drop(fn: (column) => column =~ /host*/)
+                  |> aggregateWindow(every: v.windowPeriod, fn: mean)
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 6
+      - axes:
+          - base: "2"
+            name: y
+            scale: linear
+          - base: "10"
+            name: x
+            scale: linear
+        colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 2
+        kind: Single_Stat_Plus_Line
+        name: CPU usage
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r._field == "samples_system.cpu.total.norm.pct")
+        suffix: ' % '
+        width: 3
+        xCol: _time
+        xPos: 3
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Process memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r._field == "samples_system.process.memory.size")
+        width: 3
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transactions count per min
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                    |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r._field == "samples_transaction.duration.count")
+                //   |> aggregateWindow(every: v.windowPeriod, fn: mean)
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 3
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Response results
+        position: overlaid
+        queries:
+          - query: "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop:
+                v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_transaction\")\n
+                \   |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)\n
+                \  |> filter(fn: (r) => r._field == \"duration\")\n    \n//   |> filter(fn:
+                (r) => r._field == \"context_response_status_code\")\n//   |> filter(fn:
+                (r) => r._value > 300)\n\n//   |> group(columns: [\"host\", \"_measurement\",
+                \"result, \"], mode:\"by\")\n  |> aggregateWindow(every: 1m, fn: count)"
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 6
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Free memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")  |> filter(fn: (r) => r.service_agent_name == v.service_agent_name)
+                  |> filter(fn: (r) => r._field == "samples_system.memory.actual.free")
+        width: 3
+        xCol: _time
+        xPos: 9
+        yCol: _value
+        yPos: 1
+    description: A collection of visializations of Elastic-APM Java agent
+    name: Generic APM dashboard
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: modest-lalande-e9b001
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    charts:
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### System metrics'
+        width: 12
+      - colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 1
+        kind: Single_Stat
+        name: System Memory Total
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                      |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field == "samples_system.memory.total")
+                  |> last()
+                  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))
+                  |> yield(name: "last")
+        suffix: ' GB'
+        width: 2
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Process Memory RSS
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) =>  r._field == "samples_system.process.memory.rss.bytes")
+                  |> keep(columns: ["_time", "_value", "_field", "host", "service_name", "type", "_measurement"])
+        width: 2
+        xCol: _time
+        yCol: _value
+        yPos: 2
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### Ruby runtime'
+        width: 12
+        yPos: 4
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: GC count
+        position: overlaid
+        queries:
+          - query: "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop:
+                v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_metricset\")\n
+                \ |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn:
+                (r) => r._field == \"samples_ruby.gc.count\")\n//   \n  |> aggregateWindow(every:
+                1m, fn: mean)\n  \n  |> keep(columns: [\"_time\", \"_value\", \"system_hostname\",
+                \"_field\", \"host\", \"service_name\", \"type\", \"_measurement\"])\n//
+                \  |> yield(name: \"nonnegative derivative\")"
+        width: 4
+        xCol: _time
+        yCol: _value
+        yPos: 5
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### Transactions'
+        width: 12
+        yPos: 7
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+            suffix: 'ms '
+        colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 4
+        kind: Single_Stat_Plus_Line
+        name: Transaction duration mean
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field =~ /duration/ and r._field != "duration_count")
+                    |> drop(fn: (column) => column =~ /system*/)
+                   |> drop(fn: (column) => column =~ /process*/)
+                   |> drop(fn: (column) => column =~ /apm_metricset*/)
+                   |> drop(fn: (column) => column =~ /service_environment*/)
+                   |> drop(fn: (column) => column =~ /host*/)
+
+                    |> aggregateWindow(every: 1m, fn: mean)
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 8
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 3
+        kind: Single_Stat_Plus_Line
+        name: CPU usage
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                    |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field == "samples_system.cpu.total.norm.pct")
+                  |> map(fn: (r) => ({ r with _value: r._value * 100.0 }))
+                  |> keep(columns: ["_time", "_value", "_field", "host", "service_name", "type", "_measurement"])
+        suffix: ' % '
+        width: 3
+        xCol: _time
+        xPos: 2
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Ruby threads
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field == "samples_ruby.threads")
+        width: 4
+        xCol: _time
+        xPos: 4
+        yCol: _value
+        yPos: 5
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#BF3D5E'
+            name: ruby
+            type: text
+          - hex: '#32B08C'
+            name: viridian
+            type: text
+            value: 1
+          - hex: '#513CC6'
+            name: planet
+            type: text
+            value: 50
+          - hex: '#BF3D5E'
+            name: ruby
+            type: text
+            value: 80
+          - hex: '#FDC44F'
+            name: Cthulhu
+            type: scale
+          - hex: '#007C76'
+            name: Cthulhu
+            type: scale
+          - hex: '#8983FF'
+            name: Cthulhu
+            type: scale
+        decimalPlaces: 0
+        height: 3
+        kind: Single_Stat_Plus_Line
+        name: System memory usage
+        position: overlaid
+        queries:
+          - query: "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop:
+                v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_metricset\")\n
+                \ |> filter(fn: (r) => r.service_agent_name == \"ruby\")\n  |> filter(fn:
+                (r) => r._field == \"samples_system.memory.total\" or r._field ==
+                \"samples_system.memory.actual.free\")\n  |> pivot(rowKey:[\"_time\"],
+                columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r)
+                => ({ r with _value: \n        ( r[\"samples_system.memory.total\"]
+                - r[\"samples_system.memory.actual.free\"]) /\n        ( r[\"samples_system.memory.total\"]
+                / 100.0)\n      }))\n   |> keep(columns: [\"_value\", \"_start\",
+                \"_stop\", \"_time\", \"system_hostname\", \"service_name\"])      \n
+                \  |> yield(name:\"vvv\")"
+        suffix: ' %'
+        width: 3
+        xCol: _time
+        xPos: 5
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 4
+        kind: Single_Stat_Plus_Line
+        name: Transactions count per min
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "ruby")
+                    |> filter(fn: (r) => r._field == "samples_transaction.duration.count")
+                   |> drop(fn: (column) => column =~ /system*/)
+                   |> drop(fn: (column) => column =~ /process*/)
+                   |> drop(fn: (column) => column =~ /apm_metricset*/)
+                   |> drop(fn: (column) => column =~ /service_environment*/)
+                   |> drop(fn: (column) => column =~ /host*/)
+
+                  //|> keep(columns: ["_time", "_value", "system_hostname", "_field", "host", "service_name", "type", "_measurement"])
+                //   |> drop(columns: ["system_platform", "system_hostname", "system_architecture", "service_runtime_version",
+                //   "service_runtime_name","service_language_name", "service_language_version", "service_framework_name", "service_framework_version"])
+                //   |> keep(columns: ["_time", "_value", "_field", "host", "service_name", "type", "_measurement"])
+                   |> aggregateWindow(every: 1m, fn: mean)
+
+                //   |> yield(name: "mean")
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 8
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Process memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                    |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field == "samples_system.process.memory.size" )
+                  |> keep(columns: ["_time", "_value", "_field", "host", "service_name", "type", "_measurement"])
+        width: 4
+        xPos: 8
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Ruby Heap slots
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "ruby")
+                  |> filter(fn: (r) => r._field == "samples_ruby.heap.slots.live" or r._field == "samples_ruby.heap.slots.free" or r._field == "samples_ruby.heap.allocations.total")
+        width: 4
+        xCol: _time
+        xPos: 8
+        yCol: _value
+        yPos: 5
+    description: A collection of visializations of Elastic-APM Ruby agent
+    name: APM Ruby on Rails App
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: practical-keldysh-69b001
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    charts:
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### System metrics'
+        width: 12
+      - colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+          - hex: '#F95F53'
+            name: curacao
+            type: text
+            value: 1
+        decimalPlaces: 2
+        height: 2
+        kind: Single_Stat
+        name: Errors
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_error")
+                  |> filter(fn: (r) => r["_field"] == "exception_message")
+                  |> count()
+                  |> yield(name: "count")
+        width: 2
+        yPos: 1
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### JVM runtime'
+        width: 12
+        yPos: 3
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: JVM gc time
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")
+                  |> filter(fn: (r) => r._field == "samples_jvm.gc.time")
+        width: 3
+        xCol: _time
+        yCol: _value
+        yPos: 4
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### Transactions'
+        width: 12
+        yPos: 7
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transaction duration sum
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_metricset")
+                  |> filter(fn: (r) => r["service_agent_name"] == "java")
+                  |> filter(fn: (r) => r["_field"] == "samples_transaction.duration.sum.us")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 8
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transaction duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_transaction")
+                  |> filter(fn: (r) => r["service_agent_name"] == "java")
+                  |> filter(fn: (r) => r._field =~ /duration/ and r._field != "duration_count")
+                  |> drop(fn: (column) => column =~ /system*/)
+                   |> drop(fn: (column) => column =~ /process*/)
+                   |> drop(fn: (column) => column =~ /apm_metricset*/)
+                   |> drop(fn: (column) => column =~ /service_environment*/)
+                   |> drop(fn: (column) => column =~ /host*/)
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 11
+      - colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 2
+        kind: Single_Stat
+        name: Mem Total
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r._field == "samples_system.memory.total")
+                  |> last()
+                  |> map(fn: (r) => ({r with _value: float(v: r._value) / 1024.0 / 1024.0 / 1024.0}))
+                  |> yield(name: "last")
+        suffix: ' GB'
+        width: 1
+        xPos: 2
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#00C9FF'
+            name: laser
+            type: text
+        decimalPlaces: 2
+        height: 2
+        kind: Single_Stat_Plus_Line
+        name: CPU usage
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")
+                  |> filter(fn: (r) => r._field == "samples_system.cpu.total.norm.pct")
+        suffix: ' % '
+        width: 3
+        xCol: _time
+        xPos: 3
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: JVM gc alloc
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r._field == "samples_jvm.gc.alloc")
+        width: 3
+        xCol: _time
+        xPos: 3
+        yCol: _value
+        yPos: 4
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Process memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")
+                  |> filter(fn: (r) => r._field == "samples_system.process.memory.size")
+        width: 3
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: JVM gc count
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r._field == "samples_jvm.gc.count")
+        width: 3
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 4
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Transactions count per min
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")
+                  |> filter(fn: (r) => r._field == "samples_transaction.duration.count")
+                //   |> aggregateWindow(every: v.windowPeriod, fn: mean)
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 8
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Response results
+        position: overlaid
+        queries:
+          - query: "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop:
+                v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"apm_transaction\")\n
+                \ |> filter(fn: (r) => r.service_agent_name == \"java\")\n   |> filter(fn:
+                (r) => r._field == \"duration\")\n    \n//   |> filter(fn: (r) =>
+                r._field == \"context_response_status_code\")\n//   |> filter(fn:
+                (r) => r._value > 300)\n\n//   |> group(columns: [\"host\", \"_measurement\",
+                \"result, \"], mode:\"by\")\n  |> aggregateWindow(every: 1m, fn: count)"
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 11
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 2
+        kind: Xy
+        name: Free memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r.service_agent_name == "java")
+                  |> filter(fn: (r) => r._field == "samples_system.memory.actual.free")
+        width: 3
+        xCol: _time
+        xPos: 9
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: JVM memory
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_metricset")
+                  |> filter(fn: (r) => r._field == "samples_jvm.memory.heap.committed" or r._field == "samples_jvm.memory.heap.max" or r._field == "samples_jvm.memory.heap.used" or r._field == "samples_jvm.memory.non_heap.committed" or r._field == "samples_jvm.memory.non_heap.max" or r._field == "samples_jvm.memory.non_heap.used")
+                //   |> group(columns: ["host", "_measurement", "_field"], mode:"by")
+        width: 3
+        xCol: _time
+        xPos: 9
+        yCol: _value
+        yPos: 4
+    description: A collection of visializations of Elastic-APM Java agent
+    name: APM Java Spring Boot App
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: stoic-hamilton-a9b001
+spec:
+    associations:
+      - kind: Label
+        name: crumbling-kalam-29b001
+    charts:
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### Transactions'
+        width: 12
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 4
+        kind: Xy
+        name: AVG Transaction Span Duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_span")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "duration")
+                  |> aggregateWindow(every: 1m, fn: mean)
+                  |> yield(name: "mean")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "2"
+            name: y
+            scale: linear
+          - base: "10"
+            name: x
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Browser navigation timing
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "marks_navigationTiming_connectEnd" or r._field == "marks_navigationTiming_connectStart" or r._field == "marks_navigationTiming_domComplete" or r._field == "marks_navigationTiming_domContentLoadedEventEnd" or r._field == "marks_navigationTiming_domContentLoadedEventStart" or r._field == "marks_navigationTiming_domInteractive" or r._field == "marks_navigationTiming_domLoading" or r._field == "marks_navigationTiming_domainLookupEnd" or r._field == "marks_navigationTiming_domainLookupStart" or r._field == "marks_navigationTiming_fetchStart" or r._field == "marks_navigationTiming_loadEventEnd" or r._field == "marks_navigationTiming_loadEventStart" or r._field == "marks_navigationTiming_requestStart" or r._field == "marks_navigationTiming_responseEnd" or r._field == "marks_navigationTiming_responseStart")
+                  |> aggregateWindow(every: 1m, fn: mean)
+                  |> yield(name: "mean")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 5
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 4
+        kind: Xy
+        name: AVG Page load duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "duration" )
+                  |> filter(fn: (r) => r.type == "page-load")
+                  |> aggregateWindow(every: 1m, fn: mean)
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "2"
+            name: y
+            scale: linear
+          - base: "10"
+            name: x
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Browser DOM stats
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: v.bucket)
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "marks_agent_domComplete" or r._field == "marks_agent_domInteractive" or r._field == "marks_agent_firstContentfulPaint" or r._field == "marks_agent_largestContentfulPaint" or r._field == "marks_agent_timeToFirstByte")
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 5
+    description: 'Collection of visulazations of Elastic JS RUM  '
+    name: APM rum-js
