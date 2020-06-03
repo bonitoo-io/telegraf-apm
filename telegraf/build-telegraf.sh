@@ -10,7 +10,7 @@ mkdir -p build
 cd build
 
 #pull or clone dir
-if cd telegraf; then git pull; else git clone git@github.com:bonitoo-io/telegraf.git telegraf; fi
+if cd telegraf; then git pull; else git clone git@github.com:bonitoo-io/telegraf.git telegraf; cd telegraf; fi
 
 #switch to branch
 git checkout feature/apm-input-plugin
