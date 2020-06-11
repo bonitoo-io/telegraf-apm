@@ -1,0 +1,5 @@
+http://demo-rails-app:3000/posts
+http://demo-java-app:8080/error-npe
+http://demo-java-app:8080/greeting
+http://demo-rails-app:3000/posts/new
+http://demo-rails-app:3000/posts/1/edit

@@ -9,6 +9,7 @@ docker rm -f demo-java-app || true
 docker rm -f telegraf-apm || true
 docker rm -f postgres-demo || true
 docker rm -f redis-demo || true
+docker rm -f ab || true
 
 docker network rm apm_network || true
 docker network create -d bridge apm_network --subnet 192.168.1.0/24 --gateway 192.168.1.1 || true
@@ -61,6 +62,17 @@ docker run -d --name=demo-rails-app \
 
 ## initialize database
 docker exec -it demo-rails-app rails db:migrate:reset
+
+##
+## Run Apache Benchmark to simulate load
+##
+docker run \
+        --detach \
+        --name ab \
+        --network apm_network \
+        --volume "${SCRIPT_PATH}"/ab/urls.txt:/tmp/urls.txt \
+        --volume "${SCRIPT_PATH}"/ab/load.sh:/tmp/load.sh \
+        russmckendrick/ab bash /tmp/load.sh
 
 ## import dashboard template
 docker exec influxdb_v2 /usr/src/app/template-import.sh
