@@ -39,7 +39,7 @@ docker run -d --name=demo-rails-app \
   -p 3000:3000 \
   --env ELASTIC_APM_SERVER_URL=http://telegraf-apm:8200 \
   --env POSTGRES_HOST=postgres-demo \
-  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=0.1 \
+  --env ELASTIC_APM_TRANSACTION_SAMPLE_RATE=1 \
   --env REDIS_HOST=redis-demo \
   demo-rails-app:latest
 
@@ -56,7 +56,7 @@ There are several possibilities how to setup APM agent and Telegraf plugin to re
 
 ### In telegraf apm-server
 
-* `drop_unsampled_transactions = true` - it is possible to exclude transactions that are not sampled (affected by ELASTIC_APM_TRANSACTION_SAMPLE_RATE ) 
+* `drop_unsampled_transactions = true` - it is possible to exclude transactions that are not sampled (affected by ELASTIC_APM_TRANSACTION_SAMPLE_RATE) 
 
 * aggregate transaction/span duration using `aggregators.basicstats`
 ```
@@ -101,3 +101,59 @@ There are several possibilities how to setup APM agent and Telegraf plugin to re
 ```
 * adjust tags,fields mapping: `tag_keys = ["result", "name", "transaction_type", "transaction_name", "type", "span_type", "span_subtype"]`
 * completely exclude event type `exclude_events = ["span", "error"]`
+
+### Different buckets for metricset, transactions, spans
+
+It is useful to use bucket with different retention policies for metricsets and transaction traces.  
+
+You can create a bucket with custom retention policy manualy in InfluxDB UI or by command line:
+```
+docker exec -it influxdb_v2 influx -t my-token bucket create -o my-org  -r 168h --name my-new-bucket
+``` 
+
+In `telegraf.conf` you can specify which bucket will be used for each measurement using `namepass` option.
+
+```
+[[outputs.influxdb_v2]]
+   urls = ["http://influxdb_v2:9999"]
+   token = "my-token"
+   organization = "my-org"
+   bucket = "apm_metricset"
+   namepass = ["apm_metricset"]
+
+[[outputs.influxdb_v2]]
+   urls = ["http://influxdb_v2:9999"]
+   token = "my-token"
+   organization = "my-org"
+   bucket = "apm_error"
+   namepass = ["apm_error"]
+
+[[outputs.influxdb_v2]]
+   urls = ["http://influxdb_v2:9999"]
+   token = "my-token"
+   organization = "my-org"
+   bucket = "apm_transaction"
+   namepass = ["apm_transaction","apm_span"]
+ ```
+
+### Use task to keep top slowest transactions
+
+This task will extract hourly top 10 slowest transactions for each transaction name/type into `apm_slow_traces` bucket.
+
+```
+option task = {name: "traces_duration_sample_top", every: 1h}
+
+data = from(bucket: "apm_transaction")
+	|> range(start: -1h)
+	|> filter(fn: (r) =>
+		(r._measurement == "apm_transaction" or r._measurement == "apm_span" or r._measurement == "apm_error"))
+	|> filter(fn: (r) =>
+		(r["_field"] == "id" or r["_field"] == "duration"))
+	|> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
+	|> top(n: 10, columns: ["duration"])
+
+data
+	|> to(bucket: "apm_slow_traces", org: "my-org", fieldFn: (r) =>
+		({"duration": r.duration, "id": r.id}))
+```
+

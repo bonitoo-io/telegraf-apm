@@ -34,3 +34,4 @@ curl -i -X POST http://localhost:9999/api/v2/setup -H 'accept: application/json'
 docker exec -it influxdb_v2 influx -t my-token bucket create -o my-org  -r 72h --name apm_metricset
 docker exec -it influxdb_v2 influx -t my-token bucket create -o my-org  -r 24h --name apm_transaction
 docker exec -it influxdb_v2 influx -t my-token bucket create -o my-org  -r 168h --name apm_error
+docker exec -it influxdb_v2 influx -t my-token bucket create -o my-org  -r 168h --name apm_slow_traces

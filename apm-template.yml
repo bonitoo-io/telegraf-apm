@@ -1,7 +1,7 @@
 apiVersion: influxdata.com/v2alpha1
 kind: Label
 metadata:
-    name: adventuring-rhodes-f90001
+    name: loving-gould-dcc001
 spec:
     color: '#FFB94A'
     name: apm
@@ -9,11 +9,11 @@ spec:
 apiVersion: influxdata.com/v2alpha1
 kind: Task
 metadata:
-    name: rusty-merkle-390000
+    name: annoying-kare-5cc003
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     every: 1h
     name: traces_duration_sample_top
     query: |-
@@ -23,39 +23,21 @@ spec:
         		(r._measurement == "apm_transaction" or r._measurement == "apm_span" or r._measurement == "apm_error"))
         	|> filter(fn: (r) =>
         		(r["_field"] == "id" or r["_field"] == "duration"))
-            |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
+        	|> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
         	|> top(n: 10, columns: ["duration"])
-        data
-        	|> to(bucket: "my-bucket", org: "my-org")
----
-apiVersion: influxdata.com/v2alpha1
-kind: Variable
-metadata:
-    name: adventuring-elion-f90003
-spec:
-    associations:
-      - kind: Label
-        name: adventuring-rhodes-f90001
-    language: flux
-    name: name
-    query: |-
-        import "influxdata/influxdb/v1"
 
-        v1.measurementTagValues(
-          bucket: v.bucket,
-          measurement: "apm_transaction",
-          tag: "name"
-        )
-    type: query
+        data
+        	|> to(bucket: "apm_slow_traces", org: "my-org", fieldFn: (r) =>
+        		({"duration": r.duration, "id": r.id}))
 ---
 apiVersion: influxdata.com/v2alpha1
 kind: Variable
 metadata:
-    name: hardcore-proskuriakova-f9000b
+    name: compassionate-hawking-9cc006
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     language: flux
     name: service_agent_name
     query: |-
@@ -71,11 +53,28 @@ spec:
 apiVersion: influxdata.com/v2alpha1
 kind: Variable
 metadata:
-    name: hopeful-chatelet-f9000f
+    name: competent-heisenberg-dcc005
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
+    language: flux
+    name: bucket
+    query: |-
+        buckets()
+          |> filter(fn: (r) => r.name !~ /^_/)
+          |> rename(columns: {name: "_value"})
+          |> keep(columns: ["_value"])
+    type: query
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Variable
+metadata:
+    name: peaceful-edison-9cc002
+spec:
+    associations:
+      - kind: Label
+        name: loving-gould-dcc001
     language: flux
     name: service_name
     query: |-
@@ -91,34 +90,156 @@ spec:
 apiVersion: influxdata.com/v2alpha1
 kind: Variable
 metadata:
-    name: obstinate-zhukovsky-f90007
+    name: zealous-mclaren-dcc001
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     language: flux
-    name: bucket
+    name: name
     query: |-
-        buckets()
-          |> filter(fn: (r) => r.name !~ /^_/)
-          |> rename(columns: {name: "_value"})
-          |> keep(columns: ["_value"])
+        import "influxdata/influxdb/v1"
+
+        v1.measurementTagValues(
+          bucket: v.bucket,
+          measurement: "apm_transaction",
+          tag: "name"
+        )
     type: query
 ---
 apiVersion: influxdata.com/v2alpha1
 kind: Dashboard
 metadata:
-    name: amazing-bhaskara-390001
+    name: affectionate-morse-5cc001
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     charts:
-      - height: 1
-        kind: Markdown
-        name: Name this Cell
-        note: '#### System metrics'
-        width: 12
+      - colors:
+          - hex: '#ffffff'
+            name: white
+            type: text
+          - hex: '#F95F53'
+            name: curacao
+            type: text
+            value: 10
+        fieldOptions:
+          - displayName: _time
+            fieldName: _time
+            visible: true
+          - displayName: _start
+            fieldName: _start
+          - displayName: transaction id
+            fieldName: id
+            visible: true
+          - displayName: _stop
+            fieldName: _stop
+          - displayName: duration
+            fieldName: duration
+            visible: true
+          - displayName: _measurement
+            fieldName: _measurement
+          - displayName: host
+            fieldName: host
+          - displayName: name
+            fieldName: name
+            visible: true
+          - displayName: service_agent_name
+            fieldName: service_agent_name
+          - displayName: service_environment
+            fieldName: service_environment
+          - displayName: service_name
+            fieldName: service_name
+          - displayName: system_hostname
+            fieldName: system_hostname
+          - displayName: type
+            fieldName: type
+            visible: true
+        height: 6
+        kind: Table
+        name: Slowest transactions
+        queries:
+          - query: |-
+                from(bucket: "apm_slow_traces")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) =>  r["_measurement"] == "apm_transaction")
+                  |> filter(fn: (r) => r["_field"] == "duration" or r["_field"] == "id")
+                  |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
+                  |> sort(columns: ["duration"], desc: false)
+        tableOptions:
+            sortBy: duration
+            verticalTimeAxis: true
+        timeFormat: YYYY-MM-DD HH:mm:ss
+        width: 6
+      - colors:
+          - hex: '#ffffff'
+            name: white
+            type: text
+          - hex: '#F95F53'
+            name: curacao
+            type: text
+            value: 10
+        fieldOptions:
+          - displayName: _time
+            fieldName: _time
+            visible: true
+          - displayName: _start
+            fieldName: _start
+          - displayName: span id
+            fieldName: id
+            visible: true
+          - displayName: _stop
+            fieldName: _stop
+          - displayName: duration
+            fieldName: duration
+            visible: true
+          - displayName: _measurement
+            fieldName: _measurement
+          - displayName: host
+            fieldName: host
+          - displayName: name
+            fieldName: name
+            visible: true
+          - displayName: service_agent_name
+            fieldName: service_agent_name
+          - displayName: service_environment
+            fieldName: service_environment
+          - displayName: service_name
+            fieldName: service_name
+          - displayName: system_hostname
+            fieldName: system_hostname
+          - displayName: type
+            fieldName: type
+            visible: true
+        height: 6
+        kind: Table
+        name: Slowest spans
+        queries:
+          - query: |-
+                from(bucket: "apm_slow_traces")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r["_measurement"] == "apm_span")
+                  |> filter(fn: (r) => r["_field"] == "duration" or r["_field"] == "id")
+                  |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
+                  |> sort(columns: ["duration"], desc: false)
+        tableOptions:
+            sortBy: duration
+            verticalTimeAxis: true
+        timeFormat: YYYY-MM-DD HH:mm:ss
+        width: 6
+        xPos: 6
+    name: Slowest 10 traces (hourly sample)
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: brave-dhawan-1cc001
+spec:
+    associations:
+      - kind: Label
+        name: loving-gould-dcc001
+    charts:
       - colors:
           - hex: '#ffffff'
             name: white
@@ -172,7 +293,6 @@ spec:
             verticalTimeAxis: true
         timeFormat: YYYY-MM-DD HH:mm:ss
         width: 6
-        yPos: 1
       - axes:
           - base: "10"
             name: x
@@ -206,7 +326,7 @@ spec:
         width: 3
         xCol: _time
         yCol: _value
-        yPos: 5
+        yPos: 4
       - axes:
           - base: "10"
             name: x
@@ -239,7 +359,7 @@ spec:
         width: 6
         xCol: _time
         yCol: _value
-        yPos: 7
+        yPos: 6
       - axes:
           - base: "10"
             name: x
@@ -278,7 +398,7 @@ spec:
         width: 6
         xCol: _time
         yCol: _value
-        yPos: 10
+        yPos: 9
       - axes:
           - base: "10"
             name: x
@@ -312,7 +432,7 @@ spec:
         xCol: _time
         xPos: 3
         yCol: _value
-        yPos: 5
+        yPos: 4
       - colors:
           - hex: '#ffffff'
             name: white
@@ -366,7 +486,6 @@ spec:
         timeFormat: YYYY-MM-DD HH:mm:ss
         width: 6
         xPos: 6
-        yPos: 1
       - axes:
           - base: "10"
             name: x
@@ -400,7 +519,7 @@ spec:
         xCol: _time
         xPos: 6
         yCol: _value
-        yPos: 5
+        yPos: 4
       - axes:
           - base: "10"
             name: x
@@ -435,7 +554,7 @@ spec:
         xCol: _time
         xPos: 6
         yCol: _value
-        yPos: 7
+        yPos: 6
       - axes:
           - base: "10"
             name: x
@@ -470,7 +589,7 @@ spec:
         xCol: _time
         xPos: 6
         yCol: _value
-        yPos: 10
+        yPos: 9
       - axes:
           - base: "10"
             name: x
@@ -504,175 +623,18 @@ spec:
         xCol: _time
         xPos: 9
         yCol: _value
-        yPos: 5
+        yPos: 4
     description: A collection of visializations of Elastic-APM Java agent
     name: Generic APM dashboard
 ---
 apiVersion: influxdata.com/v2alpha1
 kind: Dashboard
 metadata:
-    name: goofy-davinci-390001
+    name: intelligent-aryabhata-9cc001
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
-    charts:
-      - height: 1
-        kind: Markdown
-        name: Name this Cell
-        note: '#### Transactions'
-        width: 12
-      - axes:
-          - base: "10"
-            name: y
-            scale: linear
-          - base: "10"
-            name: x
-            scale: linear
-        colors:
-          - hex: '#31C0F6'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#A500A5'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#FF7E27'
-            name: Nineteen Eighty Four
-            type: scale
-        geom: line
-        height: 4
-        kind: Xy
-        name: AVG Transaction Span Duration
-        position: overlaid
-        queries:
-          - query: |-
-                from(bucket: "apm_transaction")
-                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
-                  |> filter(fn: (r) => r._measurement == "apm_span")
-                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
-                  |> filter(fn: (r) => r._field == "duration")
-                  |> aggregateWindow(every: 1m, fn: mean)
-                  |> yield(name: "mean")
-        width: 6
-        xCol: _time
-        yCol: _value
-        yPos: 1
-      - axes:
-          - base: "10"
-            name: x
-            scale: linear
-          - base: "2"
-            name: y
-            scale: linear
-        colors:
-          - hex: '#31C0F6'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#A500A5'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#FF7E27'
-            name: Nineteen Eighty Four
-            type: scale
-        geom: line
-        height: 3
-        kind: Xy
-        name: Browser navigation timing
-        position: overlaid
-        queries:
-          - query: |-
-                from(bucket: "apm_transaction")
-                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
-                  |> filter(fn: (r) => r._measurement == "apm_transaction")
-                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
-                  |> filter(fn: (r) => r._field == "marks_navigationTiming_connectEnd" or r._field == "marks_navigationTiming_connectStart" or r._field == "marks_navigationTiming_domComplete" or r._field == "marks_navigationTiming_domContentLoadedEventEnd" or r._field == "marks_navigationTiming_domContentLoadedEventStart" or r._field == "marks_navigationTiming_domInteractive" or r._field == "marks_navigationTiming_domLoading" or r._field == "marks_navigationTiming_domainLookupEnd" or r._field == "marks_navigationTiming_domainLookupStart" or r._field == "marks_navigationTiming_fetchStart" or r._field == "marks_navigationTiming_loadEventEnd" or r._field == "marks_navigationTiming_loadEventStart" or r._field == "marks_navigationTiming_requestStart" or r._field == "marks_navigationTiming_responseEnd" or r._field == "marks_navigationTiming_responseStart")
-                  |> aggregateWindow(every: 1m, fn: mean)
-                  |> yield(name: "mean")
-        width: 6
-        xCol: _time
-        yCol: _value
-        yPos: 5
-      - axes:
-          - base: "10"
-            name: x
-            scale: linear
-          - base: "10"
-            name: y
-            scale: linear
-        colors:
-          - hex: '#31C0F6'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#A500A5'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#FF7E27'
-            name: Nineteen Eighty Four
-            type: scale
-        geom: line
-        height: 4
-        kind: Xy
-        name: AVG Page load duration
-        position: overlaid
-        queries:
-          - query: |-
-                from(bucket: "apm_transaction")
-                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
-                  |> filter(fn: (r) => r._measurement == "apm_transaction")
-                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
-                  |> filter(fn: (r) => r._field == "duration" )
-                  |> filter(fn: (r) => r.type == "page-load")
-                  |> aggregateWindow(every: 1m, fn: mean)
-        width: 6
-        xCol: _time
-        xPos: 6
-        yCol: _value
-        yPos: 1
-      - axes:
-          - base: "10"
-            name: x
-            scale: linear
-          - base: "2"
-            name: y
-            scale: linear
-        colors:
-          - hex: '#31C0F6'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#A500A5'
-            name: Nineteen Eighty Four
-            type: scale
-          - hex: '#FF7E27'
-            name: Nineteen Eighty Four
-            type: scale
-        geom: line
-        height: 3
-        kind: Xy
-        name: Browser DOM stats
-        position: overlaid
-        queries:
-          - query: |-
-                from(bucket: "apm_transaction")
-                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
-                  |> filter(fn: (r) => r._measurement == "apm_transaction")
-                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
-                  |> filter(fn: (r) => r._field == "marks_agent_domComplete" or r._field == "marks_agent_domInteractive" or r._field == "marks_agent_firstContentfulPaint" or r._field == "marks_agent_largestContentfulPaint" or r._field == "marks_agent_timeToFirstByte")
-        width: 6
-        xCol: _time
-        xPos: 6
-        yCol: _value
-        yPos: 5
-    description: 'Collection of visulazations of Elastic JS RUM  '
-    name: APM rum-js
----
-apiVersion: influxdata.com/v2alpha1
-kind: Dashboard
-metadata:
-    name: keen-bhabha-b90001
-spec:
-    associations:
-      - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     charts:
       - height: 1
         kind: Markdown
@@ -782,10 +744,10 @@ spec:
         yPos: 8
       - axes:
           - base: "10"
-            name: y
+            name: x
             scale: linear
           - base: "10"
-            name: x
+            name: y
             scale: linear
         colors:
           - hex: '#31C0F6'
@@ -1112,11 +1074,11 @@ spec:
 apiVersion: influxdata.com/v2alpha1
 kind: Dashboard
 metadata:
-    name: strange-thompson-b90001
+    name: pensive-lewin-1cc001
 spec:
     associations:
       - kind: Label
-        name: adventuring-rhodes-f90001
+        name: loving-gould-dcc001
     charts:
       - height: 1
         kind: Markdown
@@ -1491,3 +1453,160 @@ spec:
         yPos: 5
     description: A collection of visializations of Elastic-APM Ruby agent
     name: APM Ruby on Rails App
+---
+apiVersion: influxdata.com/v2alpha1
+kind: Dashboard
+metadata:
+    name: vigorous-villani-dcc001
+spec:
+    associations:
+      - kind: Label
+        name: loving-gould-dcc001
+    charts:
+      - height: 1
+        kind: Markdown
+        name: Name this Cell
+        note: '#### Transactions'
+        width: 12
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 4
+        kind: Xy
+        name: AVG Transaction Span Duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: "apm_transaction")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_span")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "duration")
+                  |> aggregateWindow(every: 1m, fn: mean)
+                  |> yield(name: "mean")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Browser navigation timing
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: "apm_transaction")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "marks_navigationTiming_connectEnd" or r._field == "marks_navigationTiming_connectStart" or r._field == "marks_navigationTiming_domComplete" or r._field == "marks_navigationTiming_domContentLoadedEventEnd" or r._field == "marks_navigationTiming_domContentLoadedEventStart" or r._field == "marks_navigationTiming_domInteractive" or r._field == "marks_navigationTiming_domLoading" or r._field == "marks_navigationTiming_domainLookupEnd" or r._field == "marks_navigationTiming_domainLookupStart" or r._field == "marks_navigationTiming_fetchStart" or r._field == "marks_navigationTiming_loadEventEnd" or r._field == "marks_navigationTiming_loadEventStart" or r._field == "marks_navigationTiming_requestStart" or r._field == "marks_navigationTiming_responseEnd" or r._field == "marks_navigationTiming_responseStart")
+                  |> aggregateWindow(every: 1m, fn: mean)
+                  |> yield(name: "mean")
+        width: 6
+        xCol: _time
+        yCol: _value
+        yPos: 5
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "10"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 4
+        kind: Xy
+        name: AVG Page load duration
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: "apm_transaction")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "duration" )
+                  |> filter(fn: (r) => r.type == "page-load")
+                  |> aggregateWindow(every: 1m, fn: mean)
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 1
+      - axes:
+          - base: "10"
+            name: x
+            scale: linear
+          - base: "2"
+            name: y
+            scale: linear
+        colors:
+          - hex: '#31C0F6'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#A500A5'
+            name: Nineteen Eighty Four
+            type: scale
+          - hex: '#FF7E27'
+            name: Nineteen Eighty Four
+            type: scale
+        geom: line
+        height: 3
+        kind: Xy
+        name: Browser DOM stats
+        position: overlaid
+        queries:
+          - query: |-
+                from(bucket: "apm_transaction")
+                  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+                  |> filter(fn: (r) => r._measurement == "apm_transaction")
+                  |> filter(fn: (r) => r.service_agent_name == "rum-js")
+                  |> filter(fn: (r) => r._field == "marks_agent_domComplete" or r._field == "marks_agent_domInteractive" or r._field == "marks_agent_firstContentfulPaint" or r._field == "marks_agent_largestContentfulPaint" or r._field == "marks_agent_timeToFirstByte")
+        width: 6
+        xCol: _time
+        xPos: 6
+        yCol: _value
+        yPos: 5
+    description: 'Collection of visulazations of Elastic JS RUM  '
+    name: APM rum-js
